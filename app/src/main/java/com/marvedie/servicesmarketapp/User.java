@@ -6,20 +6,18 @@ public class User {
     private String email;
     private String phone;
     private String id;
-    private String isRegisteredFreelancer;
 
-    public User(String s, String toString, String string, String s1) {
+
+    public User() {
 
     }
 
-
-    public User(String name, String password, String email, String phone, String id, String isRegisteredFreelancer) {
+    public User(String name, String password, String email, String phone, String id) {
         this.name = name;
         this.password = password;
         this.email = email;
         this.phone = phone;
         this.id = id;
-        this.isRegisteredFreelancer = isRegisteredFreelancer;
     }
 
     public String getName() {
@@ -60,13 +58,5 @@ public class User {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getIsRegisteredFreelancer() {
-        return isRegisteredFreelancer;
-    }
-
-    public void setIsRegisteredFreelancer(String isRegisteredFreelancer) {
-        this.isRegisteredFreelancer = isRegisteredFreelancer;
     }
 }

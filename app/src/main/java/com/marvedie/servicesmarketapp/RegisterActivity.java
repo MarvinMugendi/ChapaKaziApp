@@ -35,8 +35,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     MaterialEditText editTextEmail, editTextPassword;
 
     private ProgressDialog progressDialog;
-    //firebase authentication object
-    private FirebaseAuth firebaseAuth;
+
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -77,18 +76,16 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    if(dataSnapshot.child(edtPhone.getText().toString()).exists()) {
+                    if (dataSnapshot.child(edtPhone.getText().toString()).exists()) {
                         mDialog.dismiss();
                         Toast.makeText(RegisterActivity.this, "User Already Registered", Toast.LENGTH_SHORT).show();
-                    }
-                    else
-                    {
+                    } else {
 
-                        User user = new User(edtName.getText().toString(),editTextPassword.getText().toString(),editTextEmail.getText().toString(),
-                                edtId.getText().toString());
+                        User user = new User(edtName.getText().toString(), edtPhone.getText().toString(),
+                                editTextEmail.getText().toString(),edtId.getText().toString(),editTextPassword.getText().toString());
                         table_user.child(edtPhone.getText().toString()).setValue(user);
                         Toast.makeText(RegisterActivity.this, "Sign Up Sucessful!", Toast.LENGTH_SHORT).show();
-                        Intent homeIntent = new Intent(RegisterActivity.this,Choose.class);
+                        Intent homeIntent = new Intent(RegisterActivity.this, Choose.class);
                         startActivity(homeIntent);
                     }
                 }
@@ -135,32 +132,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         progressDialog.setMessage("Registering User");
         progressDialog.show();
 
-
-        firebaseAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        progressDialog.dismiss();
-                        if (task.isSuccessful()) {
-                            /*user is successfully registered and logged in
-                            we will start the profile activity here
-                            right now lets display a toast */
-                            Toast.makeText(getApplicationContext(),"User Register Successful",Toast.LENGTH_SHORT).show();
-                            //open new activity.
-                            finish();
-                            startActivity(new Intent(getApplicationContext(), Choose.class));
-
-                        } else {
-                            //to check if email is already register
-                            if (task.getException() instanceof FirebaseAuthUserCollisionException){
-                                Toast.makeText(getApplicationContext(), "You are already Registered", Toast.LENGTH_SHORT).show();
-                            }else{
-                                Toast.makeText(getApplicationContext(), "Error Occured, Check Credentials and Internet connectivity then Try Again",Toast.LENGTH_SHORT).show();
-                            }
-
-                        }
-                    }
-                });
 
   }
 
