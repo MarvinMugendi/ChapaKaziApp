@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_main"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".UpdateInformation">
+
+
+        <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:id="@+id/linearLayout"
+    >
+
+    <TextView
+        android:id="@+id/tvgoodConduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload Good Conduct certificate or picture of Your Id(front) to apply as a Freelancer"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="131dp"
+        tools:layout_editor_absoluteY="105dp" />
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="181dp"
+                android:layout_height="133dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/camera"
+                android:scaleType="centerCrop" />
+            <info.hoang8f.widget.FButton
+                android:id="@+id/btnChoose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="ChooseImage"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="30dp"
+                android:textSize="18sp"
+                android:layout_below="@+id/imageView"
+                app:fButtonColor="@color/teal_300"
+                fbutton:cornerRadius="5dp"
+                fbutton:shadowColor="@color/grey_600"
+                fbutton:shadowEnabled="true"
+                fbutton:shadowHeight="5dp" />
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/edtTown"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:hint="Enter Town"
+        android:inputType="text"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:textSize="24sp"
+        app:met_baseColor="@android:color/white"
+        app:met_floatingLabel="highlight"
+        app:met_maxCharacters="11"
+        app:met_primaryColor="@android:color/white"
+        app:met_singleLineEllipsis="true" />
+
+    <android.support.v4.widget.ContentLoadingProgressBar
+        android:id="@+id/progressbar"
+        android:visibility="gone"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/edtPhone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Phone"
+        android:layout_marginTop="10dp"
+        android:inputType="text"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:textSize="24sp"
+        app:met_baseColor="@android:color/white"
+        app:met_floatingLabel="highlight"
+        app:met_maxCharacters="11"
+        app:met_primaryColor="@android:color/white"
+        app:met_singleLineEllipsis="true" />
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:id="@+id/edtPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Your Password"
+        android:layout_marginTop="10dp"
+        android:inputType="text"
+        android:textColor="@android:color/white"
+        android:textColorHint="@android:color/white"
+        android:textSize="24sp"
+        app:met_baseColor="@android:color/white"
+        app:met_floatingLabel="highlight"
+        app:met_maxCharacters="11"
+        app:met_primaryColor="@android:color/white"
+        app:met_singleLineEllipsis="true" />
+    </LinearLayout>
+
+    <info.hoang8f.widget.FButton
+        android:id="@+id/btnUpdate"
+        android:layout_marginTop="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/linearLayout"
+        android:textSize="18sp"
+        app:fButtonColor="@color/amber_600"
+        fbutton:shadowColor="@color/grey_600"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp"
+        fbutton:cornerRadius="5dp"
+        />
+
+    <info.hoang8f.widget.FButton
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_centerHorizontal="true"
+        android:textSize="18sp"
+        android:layout_below="@+id/btnUpdate"
+        app:fButtonColor="@color/teal_300"
+        fbutton:cornerRadius="5dp"
+        fbutton:shadowColor="@color/grey_600"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp" />
+
+</RelativeLayout>
+</ScrollView>

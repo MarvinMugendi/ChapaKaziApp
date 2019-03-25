@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/stars_background"
+    tools:context=".ProfileActivity">
+
+
+    <TextView
+        android:id="@+id/textViewUserEmail"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="TextView"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/buttonLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="LogOut" />
+
+    <Button
+        android:id="@+id/btnHire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="197dp"
+        android:padding="10dp"
+        android:text="HIRE"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/btnWork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/hire_image"
+        android:layout_alignParentEnd="true"
+        android:text="Post
+Project"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/UpdateInformation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="60dp"
+        android:text="Create Profile" />
+
+    <ImageView
+        android:id="@+id/image_update"
+        android:layout_width="141dp"
+        android:layout_height="114dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="133dp"
+        app:srcCompat="@drawable/updateprofile" />
+
+    <ImageView
+        android:id="@+id/hire_image"
+        android:layout_width="180dp"
+        android:layout_height="130dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="57dp"
+        app:srcCompat="@drawable/hiring" />
+
+    <ImageView
+        android:id="@+id/image_work"
+        android:layout_width="160dp"
+        android:layout_height="142dp"
+        android:layout_above="@+id/buttonLogout"
+        android:layout_alignParentEnd="true"
+        app:srcCompat="@drawable/project" />
+
+    <Button
+        android:id="@+id/ChatBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/UpdateInformation"
+        android:layout_alignParentEnd="true"
+        android:text="Chat" />
+
+    <Button
+        android:id="@+id/btn.Mpesa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/image_update"
+        android:layout_alignParentEnd="true"
+        android:text="Mpesa" />
+
+</RelativeLayout>

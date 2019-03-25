@@ -1,0 +1,11 @@
+#Internal package file, do not edit.
+#Thu Mar 14 14:51:21 EAT 2019
+1.base=C\:\\Users\\Admin\\Downloads\\ServiceMarket\\ServiceMarket\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+0.baseType=DIRECTORY
+1.baseType=DIRECTORY
+count=2
+1.set=DEX
+0.path=classes.dex
+0.set=DEX
+0.base=C\:\\Users\\Admin\\Downloads\\ServiceMarket\\ServiceMarket\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+1.path=classes2.dex

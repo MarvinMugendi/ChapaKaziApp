@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1098743538211",
+    "firebase_url": "https://servicesmarketapp.firebaseio.com",
+    "project_id": "servicesmarketapp",
+    "storage_bucket": "servicesmarketapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1098743538211:android:c0a516eede741b45",
+        "android_client_info": {
+          "package_name": "com.marvedie.servicesmarketapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1098743538211-hojqht7g56090makkch52jh4k2i98rjs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.marvedie.servicesmarketapp",
+            "certificate_hash": "4154fba55edc1b5f80abab423cc7853f088c54b6"
+          }
+        },
+        {
+          "client_id": "1098743538211-lglt1fsfdf577b549fbbiclq7dgioer6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB4F6cWxu0Zb5MhPmcegBOKgwCp1wkZbYM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1098743538211-lglt1fsfdf577b549fbbiclq7dgioer6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

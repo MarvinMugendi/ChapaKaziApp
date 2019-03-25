@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.twigafoods:daraja:0.1.2@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/daraja-0.1.2.aar/98d94933089a3e5641c905eeaa1f4e3a/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/daraja-0.1.2.aar/98d94933089a3e5641c905eeaa1f4e3a/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.twigafoods/daraja/0.1.2/e3a87bd0a80dec647036ff7cdb8c5421442fa43c/daraja-0.1.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
