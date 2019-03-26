@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,53 +11,79 @@
 
     <TextView
         android:id="@+id/textViewUserEmail"
-        android:layout_width="match_parent"
-        android:layout_height="36dp"
-        android:layout_alignParentStart="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:layout_centerInParent="true"
         android:layout_alignParentTop="true"
         android:text="TextView"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:textSize="18sp" />
 
-    <Button
+    <info.hoang8f.widget.FButton
         android:id="@+id/buttonLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="300dp"
+        android:layout_gravity="center"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="LogOut" />
+        android:text="Logout"
+        android:textColor="@color/white"
+        app:fButtonColor="@color/purple_400"
+        fbutton:cornerRadius="5dp"
+        fbutton:shadowColor="@color/grey_600"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp" />
 
-    <Button
+    <info.hoang8f.widget.FButton
         android:id="@+id/btnHire"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/UpdateInformation"
+        android:layout_gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="197dp"
         android:padding="10dp"
         android:text="HIRE"
         android:textSize="18sp"
-        android:visibility="visible" />
+        android:textColor="@color/white"
+        app:fButtonColor="@color/green_300"
+        fbutton:cornerRadius="5dp"
+        fbutton:shadowColor="@color/grey_600"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp" />
 
-    <Button
+    <info.hoang8f.widget.FButton
         android:id="@+id/btnWork"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="51dp"
-        android:text="Post
-Project"
+        android:text="Post Project"
         android:textSize="18sp"
-        android:visibility="gone" />
+        android:textColor="@color/white"
+        app:fButtonColor="@color/teal_400"
+        fbutton:cornerRadius="5dp"
+        fbutton:shadowColor="@color/grey_600"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp" />
 
-    <Button
+    <info.hoang8f.widget.FButton
         android:id="@+id/UpdateInformation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="56dp"
-        android:text="Create profile" />
+        android:layout_marginTop="60dp"
+        android:text="Update profile"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        app:fButtonColor="@color/green_300"
+        fbutton:cornerRadius="5dp"
+        fbutton:shadowColor="@color/grey_600"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp" />
 
     <ImageView
         android:id="@+id/image_update"
@@ -85,22 +112,36 @@ Project"
         android:visibility="gone"
         app:srcCompat="@drawable/project" />
 
-    <Button
+    <info.hoang8f.widget.FButton
         android:id="@+id/ChatBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="210dp"
-        android:text="Chat" />
-
-    <Button
+        android:layout_marginBottom="200dp"
+        android:text="Chat"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        app:fButtonColor="@color/green_300"
+        fbutton:cornerRadius="5dp"
+        fbutton:shadowColor="@color/grey_600"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp" />
+    <info.hoang8f.widget.FButton
         android:id="@+id/btn.Mpesa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/ChatBtn"
-        android:text="Mpesa" />
+        android:layout_marginBottom="210dp"
+        android:text="Mpesa"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        app:fButtonColor="@color/teal_400"
+        fbutton:cornerRadius="5dp"
+        fbutton:shadowColor="@color/grey_600"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp" />
 
     <ImageView
         android:id="@+id/ivMpesa"

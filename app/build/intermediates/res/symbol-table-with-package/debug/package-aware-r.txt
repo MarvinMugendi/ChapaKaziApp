@@ -1916,7 +1916,6 @@ layout activity_login
 layout activity_main
 layout activity_mpesa
 layout activity_phone_authentication
-layout activity_profile
 layout activity_profile_hire
 layout activity_profile_work
 layout activity_register

@@ -34,14 +34,10 @@
         </activity>
         <activity android:name="com.marvedie.servicesmarketapp.RegisterActivity" />
         <activity android:name="com.marvedie.servicesmarketapp.LoginActivity" />
-        <activity android:name="com.marvedie.servicesmarketapp.ProfileActivity" />
         <activity android:name="com.marvedie.servicesmarketapp.HireActivity" />
         <activity android:name="com.marvedie.servicesmarketapp.DatabaseSave" />
         <activity android:name="com.marvedie.servicesmarketapp.AddServiceActivity" />
         <activity android:name="com.marvedie.servicesmarketapp.UpdateInformation" />
-        <activity android:name="com.marvedie.servicesmarketapp.SearchMainActivity" />
-        <activity android:name="com.marvedie.servicesmarketapp.SearchBarActivity" />
-        <activity android:name="com.marvedie.servicesmarketapp.StorageActivity" />
         <activity android:name="com.marvedie.servicesmarketapp.UsernameActivity" />
         <activity android:name="com.marvedie.servicesmarketapp.LaundryandCleaning" />
         <activity android:name="com.marvedie.servicesmarketapp.AllFreelancers" />

@@ -1,5 +1,6 @@
 package com.marvedie.servicesmarketapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -28,7 +29,7 @@ public class MpesaActivity extends AppCompatActivity {
     Daraja daraja;
     String phonenumber;
     String amount;
-    Button buttonSend;
+    Button buttonSend,buttonBack;
     EditText editTextphone,editTextAmount;
 
 
@@ -40,8 +41,16 @@ public class MpesaActivity extends AppCompatActivity {
             editTextphone = findViewById(R.id.editTextPhoneNumber);
             editTextAmount = findViewById(R.id.editTextAmount);
             buttonSend = findViewById(R.id.sendButton);
+            buttonBack = findViewById(R.id.btnBack);
 
+            buttonBack.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    finish();
+                    startActivity(new Intent(getApplicationContext(), ProfileHire.class));
 
+                }
+            });
 
             buttonSend.setOnClickListener(new View.OnClickListener() {
                 @Override

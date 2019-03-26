@@ -436,7 +436,7 @@ public final class R {
         public static final int abc_screen_toolbar = 0x7f0c0017;
         public static final int abc_search_dropdown_item_icons_2line = 0x7f0c0018;
         public static final int abc_search_view = 0x7f0c0019;
-        public static final int support_simple_spinner_dropdown_item = 0x7f0c006a;
+        public static final int support_simple_spinner_dropdown_item = 0x7f0c0069;
     }
     public static final class string {
         private string() {}

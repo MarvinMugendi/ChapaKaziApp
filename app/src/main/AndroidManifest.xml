@@ -25,14 +25,10 @@
         </activity>
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".ProfileActivity" />
         <activity android:name=".HireActivity" />
         <activity android:name=".DatabaseSave" />
         <activity android:name=".AddServiceActivity" />
         <activity android:name=".UpdateInformation" />
-        <activity android:name=".SearchMainActivity" />
-        <activity android:name=".SearchBarActivity" />
-        <activity android:name=".StorageActivity" />
         <activity android:name=".UsernameActivity" />
         <activity android:name=".LaundryandCleaning" />
         <activity android:name=".AllFreelancers" />

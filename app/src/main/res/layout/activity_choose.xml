@@ -1,27 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@drawable/background_island"
+    xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     tools:context=".Choose">
 
-    <Button
+
+    <info.hoang8f.widget.FButton
         android:id="@+id/btnHire"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_marginTop="150dp"
+        android:layout_marginBottom="150dp"
+        android:layout_gravity="center"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="118dp"
-        android:text="Hire" />
+        android:text="Hire"
+        android:textColor="@color/white"
+        app:fButtonColor="@color/orange_700"
+        fbutton:shadowColor="@color/grey_600"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp"
+        fbutton:cornerRadius="5dp"/>
 
-    <Button
+    <info.hoang8f.widget.FButton
         android:id="@+id/btnWork"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_marginTop="150dp"
+        android:layout_gravity="center"
+        android:layout_below="@+id/btnHire"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="107dp"
-        android:text="Work" />
+        android:text="Work"
+        android:textColor="@color/white"
+        app:fButtonColor="@color/purple_400"
+        fbutton:cornerRadius="5dp"
+        fbutton:shadowColor="@color/grey_600"
+        fbutton:shadowEnabled="true"
+        fbutton:shadowHeight="5dp" />
 </RelativeLayout>
+</ScrollView>
