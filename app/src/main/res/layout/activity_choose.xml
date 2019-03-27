@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="@drawable/background_island"
     xmlns:fbutton="http://schemas.android.com/apk/res-auto"
     tools:context=".Choose">
@@ -32,7 +30,7 @@
         android:id="@+id/btnWork"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="70dp"
         android:layout_gravity="center"
         android:layout_below="@+id/btnHire"
         android:layout_centerHorizontal="true"
@@ -44,4 +42,3 @@
         fbutton:shadowEnabled="true"
         fbutton:shadowHeight="5dp" />
 </RelativeLayout>
-</ScrollView>

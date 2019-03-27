@@ -36,7 +36,7 @@
         fbutton:shadowHeight="5dp" />
 
     <info.hoang8f.widget.FButton
-        android:id="@+id/btnHire"
+        android:id="@+id/btnWork"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -44,8 +44,9 @@
         android:layout_alignParentStart="true"
         android:layout_marginBottom="197dp"
         android:padding="10dp"
-        android:text="HIRE"
+        android:text="Post"
         android:textSize="18sp"
+        android:visibility="gone"
         android:textColor="@color/white"
         app:fButtonColor="@color/green_300"
         fbutton:cornerRadius="5dp"
@@ -54,13 +55,13 @@
         fbutton:shadowHeight="5dp" />
 
     <info.hoang8f.widget.FButton
-        android:id="@+id/btnWork"
+        android:id="@+id/btnHire"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="51dp"
-        android:text="Post Project"
+        android:text="Hire"
         android:textSize="18sp"
         android:textColor="@color/white"
         app:fButtonColor="@color/teal_400"

@@ -75,11 +75,11 @@ public class DatabaseSave extends AppCompatActivity implements View.OnClickListe
                 addFreelancer();
             }
         });
-        //Event Listener to get selected Artist when user clicks on an artist
+
         listViewFreelancers.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                //Get selected Artist from the List
+                //Get selected Freelancer from the List
                 Freelancer freelancer = freelancerList.get(i);
 
                 Intent intent = new Intent(getApplicationContext(),AddServiceActivity.class);
@@ -147,6 +147,18 @@ public class DatabaseSave extends AppCompatActivity implements View.OnClickListe
         String genre = spinnerGenres.getSelectedItem().toString();
         String chatemail = editTextChat.getText().toString().trim();
 
+        if (service.isEmpty())
+        {
+            editTextService.setError("Service cannot be Blank");
+            editTextService.requestFocus();
+            return;
+        }
+        if (chatemail.isEmpty())
+        {
+            editTextChat.setError("Please Register as a chat User first then Proceed with email used");
+            editTextChat.requestFocus();
+            return;
+        }
         //Check if name is filled
         if (!TextUtils.isEmpty(name)) {
 
@@ -170,9 +182,6 @@ public class DatabaseSave extends AppCompatActivity implements View.OnClickListe
             editTextName.setError("Please Enter DisplayName");
             editTextName.requestFocus();
         }
-
-
-
     }
 
     @Override

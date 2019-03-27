@@ -7,7 +7,6 @@ public class User {
     private String phone;
     private String id;
 
-
     public User() {
 
     }

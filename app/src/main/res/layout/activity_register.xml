@@ -54,7 +54,7 @@
             android:inputType="phone"
             android:textColor="@android:color/white"
             android:textColorHint="@android:color/white"
-            android:textSize="34sp"
+            android:textSize="24sp"
             app:met_baseColor="@android:color/white"
             app:met_floatingLabel="highlight"
             app:met_maxCharacters="11"

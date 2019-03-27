@@ -24,6 +24,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
@@ -68,13 +70,74 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     btnRegister.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            String name = edtName.getText().toString().trim();
+            String email = editTextEmail.getText().toString().trim();
+            String password = editTextPassword.getText().toString().trim();
+            String phone = edtPhone.getText().toString().trim();
+            String Id = edtId.getText().toString().trim();
+
+            if (name.isEmpty()){
+                edtName.setError("Please Enter Name");
+                edtName.requestFocus();
+                return;
+            }
+
+            if (phone.isEmpty()){
+                edtPhone.setError("Phone is Required");
+                edtPhone.requestFocus();
+                //stopping the function execution further
+                return;
+            }
+            if (phone.length() < 10) {
+                edtPhone.setError("Minimum phone length is 10");
+                edtPhone.requestFocus();
+                return;
+            }
+
+            if (Id.isEmpty()){
+                edtId.setError(" Kenyan Id Number is Required");
+                edtId.requestFocus();
+                //stopping the function execution further
+                return;
+            }
+            if (Id.length() < 4) {
+                edtId.setError("Enter Valid Kenyan Id Number");
+                edtId.requestFocus();
+                return;
+            }
+
+            if (email.isEmpty()){
+                //email is empty
+                editTextEmail.setError("Email is Required");
+                editTextEmail.requestFocus();
+                //stopping the function execution further
+                return;
+            }
+
+            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                editTextEmail.setError("Please Enter a Valid Email");
+                editTextEmail.requestFocus();
+                return;
+            }
+            if (password.isEmpty()){
+                editTextPassword.setError("Password is Required");
+                editTextPassword.requestFocus();
+                return;
+            }
+            if (password.length() < 6) {
+
+                editTextPassword.setError("Minimum password length is 6");
+                editTextPassword.requestFocus();
+                return;
+            }
 
             final ProgressDialog mDialog = new ProgressDialog(RegisterActivity.this);
-            mDialog.setMessage("Please Wait ....");
+            mDialog.setMessage("Please Wait ....Ensure Internet Is On");
             mDialog.show();
+
             table_user.addValueEventListener(new ValueEventListener() {
                 @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
+                public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
 
                     if (dataSnapshot.child(edtPhone.getText().toString()).exists()) {
                         mDialog.dismiss();
@@ -91,49 +154,13 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 }
 
                 @Override
-                public void onCancelled(DatabaseError databaseError) {
+                public void onCancelled(@NotNull DatabaseError databaseError) {
 
                 }
             });
         }
     });
 }
-
-    // register user method
-    private void registerUser() {
-        String email = editTextEmail.getText().toString().trim();
-        String password = editTextPassword.getText().toString().trim();
-
-        if (email.isEmpty()){
-            //email is empty
-            editTextEmail.setError("Email is Required");
-            editTextEmail.requestFocus();
-            //stopping the function execution further
-            return;
-        }
-        if (password.isEmpty()){
-            editTextPassword.setError("Password is Required");
-            editTextPassword.requestFocus();
-            return;
-        }
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            editTextEmail.setError("Please Enter a Valid Email");
-            editTextEmail.requestFocus();
-            return;
-        }
-        if (password.length() < 6) {
-
-            editTextPassword.setError("Minimum password length is 6");
-            editTextPassword.requestFocus();
-            return;
-        }
-        //if validation is okay we will show progress bar here because it is an internet activity
-        //taking time
-        progressDialog.setMessage("Registering User");
-        progressDialog.show();
-
-
-  }
 
     @Override
     public void onClick(View view) {

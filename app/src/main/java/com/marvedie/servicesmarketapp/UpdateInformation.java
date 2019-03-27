@@ -34,7 +34,10 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.marvedie.servicesmarketapp.Common.Common;
 import com.rengwuxian.materialedittext.MaterialEditText;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.IOException;
 
@@ -53,7 +56,7 @@ public class UpdateInformation extends AppCompatActivity implements View.OnClick
 
     Button btnBack,btnUpdate,btnChoose;
     ProgressBar progressBar;
-    MaterialEditText edtPhone,edtPassword,edtTown;
+    MaterialEditText edtPhone,edtPassword,edtId,edtTown;
 
     String profileImageUrl;
     StorageReference storageReference;
@@ -62,6 +65,10 @@ public class UpdateInformation extends AppCompatActivity implements View.OnClick
     // Folder path for Firebase Storage.
     String Storage_Path = "Good_Conduct_Images/";
     String Database_Path = "Register_Freelancer";
+
+    // Init Firebase
+    final FirebaseDatabase database = FirebaseDatabase.getInstance();
+    final DatabaseReference table_user = database.getReference("user");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,6 +79,7 @@ public class UpdateInformation extends AppCompatActivity implements View.OnClick
         edtPhone = findViewById(R.id.edtPhone);
         edtPassword = findViewById(R.id.edtPassword);
         edtTown = findViewById(R.id.edtTown);
+        edtId = findViewById(R.id.edtId);
         image = findViewById(R.id.imageView);
         btnBack = findViewById(R.id.btnBack);
         progressBar = findViewById(R.id.progressbar);
@@ -106,7 +114,139 @@ public class UpdateInformation extends AppCompatActivity implements View.OnClick
         btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                saveUserInformation();
+
+                String phone = edtPhone.toString().trim();
+                String id = edtId.toString().trim();
+                String town = edtTown.toString().trim();
+                String password = edtPassword.toString().trim();
+
+                if (phone.isEmpty()) {
+                    edtPhone.setError("Phone is Required");
+                    edtPhone.requestFocus();
+                    return;
+                }
+                if (phone.length() < 10) {
+                    edtPhone.setError("Minimum is 10");
+                    edtPhone.requestFocus();
+                    return;
+                }
+                if (password.isEmpty()) {
+                    edtPassword.setError("Password is Required");
+                    edtPassword.requestFocus();
+                    return;
+                }
+                if (id.isEmpty()) {
+                    edtId.setError("Id is required");
+                    edtId.requestFocus();
+                    return;
+                }
+                if (id.length() < 6) {
+                    edtId.setError("Enter Valid Kenyan Id");
+                    edtId.requestFocus();
+                    return;
+                }
+                if (town.isEmpty()) {
+                    edtTown.setError("Town is Required");
+                    edtTown.requestFocus();
+                    return;
+                }
+
+
+                // Checking whether FilePathUri Is empty or not.
+                if (FilePathUri != null) {
+
+                    // Setting progressDialog Title.
+                    progressDialog.setTitle("Image is Uploading...");
+
+                    // Showing progressDialog.
+                    progressDialog.show();
+
+
+                    table_user.addValueEventListener(new ValueEventListener() {
+
+                        @Override
+                        public void onDataChange(@NotNull DataSnapshot dataSnapshot) {
+
+
+                            if (dataSnapshot.child(edtPhone.getText().toString()).exists()) {
+
+                                //Get User Information
+                                User user = dataSnapshot.child(edtPhone.getText().toString()).getValue(User.class);
+
+                                assert user != null;
+
+                                if (user.getPassword().equals(edtPassword.getText().toString())) {
+
+                                    // Creating second StorageReference.
+                                    StorageReference storageReference2nd = storageReference.child(Storage_Path + System.currentTimeMillis() + "." + GetFileExtension(FilePathUri));
+
+                                    // Adding addOnSuccessListener to second StorageReference.
+                                    storageReference2nd.putFile(FilePathUri)
+                                            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                                @Override
+                                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+
+                                                    // Getting image name from EditText and store into string variable.
+                                                    String phone = edtPhone.getText().toString();
+                                                    String password = edtPassword.getText().toString();
+                                                    String town = edtTown.getText().toString();
+
+
+                                                    // Hiding the progressDialog after done uploading.
+                                                    progressDialog.dismiss();
+                                                    // Showing toast message after done uploading.
+                                                    Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
+
+                                                    @SuppressWarnings("VisibleForTests")
+                                                    GoodConductUploadClass goodConductUploadClass = new GoodConductUploadClass(phone, password, town, taskSnapshot.getMetadata().getReference().getDownloadUrl().toString());
+
+                                                    // Getting image upload ID.
+                                                    String ImageUploadId = databaseReference.push().getKey();
+                                                    // Adding image upload id s child element into databaseReference.
+                                                    databaseReference.child(ImageUploadId).setValue(goodConductUploadClass);
+                                                }
+                                            })
+                                            // If something goes wrong .
+                                            .addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception exception) {
+
+                                                    // Hiding the progressDialog.
+                                                    progressDialog.dismiss();
+
+                                                    // Showing exception erro message.
+                                                    Toast.makeText(UpdateInformation.this, exception.getMessage(), Toast.LENGTH_LONG).show();
+                                                }
+                                            })
+
+                                            // On progress change upload time.
+
+                                            .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                                                @Override
+                                                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+
+                                                    // Setting progressDialog Title.
+                                                    progressDialog.setTitle("Image is Uploading...");
+
+                                                }
+                                            });
+                                }
+                                else
+                                    {
+
+                                    Toast.makeText(UpdateInformation.this, "Upload Id/Good conduct and ensure Password and Phone Entered are correct!!", Toast.LENGTH_LONG).show();
+
+                                    }
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+
+                    });
+                }
 
             }
         });
@@ -148,80 +288,6 @@ public class UpdateInformation extends AppCompatActivity implements View.OnClick
             }
         }
     }
-
-
-    private void saveUserInformation() {
-
-        // Checking whether FilePathUri Is empty or not.
-        if (FilePathUri != null) {
-
-            // Setting progressDialog Title.
-            progressDialog.setTitle("Image is Uploading...");
-
-            // Showing progressDialog.
-            progressDialog.show();
-
-            // Creating second StorageReference.
-            StorageReference storageReference2nd = storageReference.child(Storage_Path + System.currentTimeMillis() + "." + GetFileExtension(FilePathUri));
-
-            // Adding addOnSuccessListener to second StorageReference.
-            storageReference2nd.putFile(FilePathUri)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                            // Getting image name from EditText and store into string variable.
-                            String phone = edtPhone.getText().toString();
-                            String password = edtPassword.getText().toString();
-                            String town = edtTown.getText().toString();
-
-
-                            // Hiding the progressDialog after done uploading.
-                            progressDialog.dismiss();
-                            // Showing toast message after done uploading.
-                            Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
-
-                            @SuppressWarnings("VisibleForTests")
-                            GoodConductUploadClass goodConductUploadClass = new GoodConductUploadClass(phone,password,town,taskSnapshot.getMetadata().getReference().getDownloadUrl().toString());
-
-                            // Getting image upload ID.
-                            String ImageUploadId = databaseReference.push().getKey();
-                            // Adding image upload id s child element into databaseReference.
-                            databaseReference.child(ImageUploadId).setValue(goodConductUploadClass);
-                        }
-                    })
-                    // If something goes wrong .
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception exception) {
-
-                            // Hiding the progressDialog.
-                            progressDialog.dismiss();
-
-                            // Showing exception erro message.
-                            Toast.makeText(UpdateInformation.this, exception.getMessage(), Toast.LENGTH_LONG).show();
-                        }
-                    })
-
-                    // On progress change upload time.
-
-                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-
-                            // Setting progressDialog Title.
-                            progressDialog.setTitle("Image is Uploading...");
-
-                        }
-                    });
-        }
-        else {
-
-            Toast.makeText(UpdateInformation.this, "Please Select Image or Add Image Name", Toast.LENGTH_LONG).show();
-
-        }
-    }
-
 
     @Override
     public void onClick(View view) {
