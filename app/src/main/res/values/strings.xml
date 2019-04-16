@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ServicesMarketApp</string>
+    <string name="app_name">ChapaKaziApp</string>
     <string name="title_activity_hire">HireActivity</string>
     <string name="tab_text_1">Tab 1</string>
     <string name="tab_text_2">Tab 2</string>
@@ -47,4 +47,10 @@
     <string name="logout">Logout</string>
     <string name="are_you_sure">Are you sure ?</string>
     <string name="cancel">Cancel</string>
+
+
+    <string name="on_failure">MPESAExpress Failed</string>
+    <string name="authentication_failed">Authentication Failed</string>
+    <string name="not_authenticated">Not Authenticated</string>
+
 </resources>

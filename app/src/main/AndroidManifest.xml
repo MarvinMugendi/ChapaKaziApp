@@ -14,8 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:replace="android:icon"
-        tools:ignore="GoogleAppIndexingWarning">
+        tools:ignore="GoogleAppIndexingWarning"
+        tools:replace="android:icon">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -75,7 +75,7 @@
         <activity android:name=".Translation" />
         <activity android:name=".Choose" />
         <activity android:name=".ProfileHire" />
-        <activity android:name=".ProfileWork"></activity>
+        <activity android:name=".ProfileWork" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-# Referenced at C:\Users\Admin\Downloads\ServiceMarket\ServiceMarket\app\build\intermediates\merged_manifests\debug\AndroidManifest.xml:18
+# Referenced at /root/StudioProjects/ChapaKaziApp/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml:18
 -keep class android.support.multidex.MultiDexApplication { <init>(); }
-# Referenced at C:\Users\Admin\Downloads\ServiceMarket\ServiceMarket\app\build\intermediates\merged_manifests\debug\AndroidManifest.xml:18
+# Referenced at /root/StudioProjects/ChapaKaziApp/app/build/intermediates/merged_manifests/debug/AndroidManifest.xml:18
 -keep class android.support.v4.app.CoreComponentFactory { <init>(); }

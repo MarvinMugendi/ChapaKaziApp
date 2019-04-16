@@ -431,7 +431,6 @@ okhttp3/internal/platform/JdkWithJettyBootPlatform.class
 okhttp3/internal/platform/Platform.class
 okhttp3/internal/ws/RealWebSocket.class
 okhttp3/internal/ws/WebSocketReader$FrameCallback.class
-okhttp3/logging/package-info.class
 okhttp3/package-info.class
 okio/AsyncTimeout.class
 okio/Buffer.class

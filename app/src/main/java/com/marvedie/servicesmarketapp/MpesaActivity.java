@@ -13,14 +13,23 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.twigafoods.daraja.Daraja;
-import com.twigafoods.daraja.DarajaListener;
-import com.twigafoods.daraja.model.AccessToken;
-import com.twigafoods.daraja.model.LNMExpress;
-import com.twigafoods.daraja.model.LNMResult;
+import com.marvedie.servicesmarketapp.daraja.Daraja;
+import com.marvedie.servicesmarketapp.daraja.DarajaListener;
+import com.marvedie.servicesmarketapp.daraja.model.AccessToken;
+import com.marvedie.servicesmarketapp.daraja.model.LNMExpress;
+import com.marvedie.servicesmarketapp.daraja.model.LNMResult;
+import com.marvedie.servicesmarketapp.daraja.util.TransactionType;
+
+import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import timber.log.Timber;
 
 public class MpesaActivity extends AppCompatActivity {
 
@@ -28,89 +37,103 @@ public class MpesaActivity extends AppCompatActivity {
     //Declare Daraja :: Global Variable
     Daraja daraja;
     String phonenumber;
-    String amount;
-    Button buttonSend,buttonBack;
-    EditText editTextphone,editTextAmount;
+    // String amount;
 
+    @BindView(R.id.editTextPhoneNumber)
+    EditText editTextphone;
+    @BindView(R.id.sendButton)
+    Button buttonSend;
+    @BindView(R.id.editTextAmount)
+    EditText editTextAmount;
+    @BindView(R.id.btnBack)
+    Button buttonBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_mpesa);
-        {
-            editTextphone = findViewById(R.id.editTextPhoneNumber);
-            editTextAmount = findViewById(R.id.editTextAmount);
-            buttonSend = findViewById(R.id.sendButton);
-            buttonBack = findViewById(R.id.btnBack);
+        ButterKnife.bind(this);
 
-            buttonBack.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    finish();
-                    startActivity(new Intent(getApplicationContext(), ProfileHire.class));
+        //editTextphone = findViewById(R.id.editTextPhoneNumber);
+        //editTextAmount = findViewById(R.id.editTextAmount);
+        //buttonSend = findViewById(R.id.sendButton);
+        // buttonBack = findViewById(R.id.btnBack);
 
+
+        daraja = Daraja.with("qXvE0PUsMWbArEqW2vzFO32kPwzE1cIv", "iCUgVUTUo0NCsWjb", new DarajaListener<AccessToken>() {
+            @Override
+            public void onResult(@NonNull AccessToken accessToken) {
+                Timber.i(accessToken.getAccess_token());
+                Toast.makeText(MpesaActivity.this, "TOKEN : " + accessToken.getAccess_token(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(String error) {
+                Timber.e(error);
+            }
+        });
+
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                startActivity(new Intent(getApplicationContext(), ProfileHire.class));
+
+            }
+        });
+
+        buttonSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //Get Phone Number from User Input
+                phonenumber = editTextphone.getText().toString().trim();
+                //Get amount
+                // amount = editTextAmount.getText().toString().trim();
+                if (TextUtils.isEmpty(phonenumber)) {
+                    editTextphone.setError("Please Provide a Phone Number");
+                    return;
                 }
-            });
-
-            buttonSend.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                   // Toast.makeText(getApplicationContext(), "Clicked", Toast.LENGTH_SHORT).show();
-                    makePayment();
-                }
-            });
-        }}
 
 
-        public void makePayment(){
+                LNMExpress lnmExpress = new LNMExpress(
+                        "174379",
+                        "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919",
+                        TransactionType.CustomerPayBillOnline,
+                        "100",
+                        "254701919020",
+                        "174379",
+                        phonenumber,
+                        "https://endkk25p2k0gn.x.pipedream.net",
+                        "FreelancerPayment",
+                        "TRANSACTION"
+                );
 
-        Daraja daraja = Daraja.with("qXvE0PUsMWbArEqW2vzFO32kPwzE1cIv", "iCUgVUTUo0NCsWjb", new DarajaListener<AccessToken>() {
-                @Override
-                public void onResult(@NonNull AccessToken accessToken) {
-                    Log.i(MpesaActivity.this.getClass().getSimpleName(), accessToken.getAccess_token());
-                    Toast.makeText(MpesaActivity.this, "TOKEN : " + accessToken.getAccess_token(), Toast.LENGTH_SHORT).show();
-                }
+                daraja.requestMPESAExpress(lnmExpress,
+                        new DarajaListener<LNMResult>() {
+                            @Override
+                            public void onResult(@NonNull LNMResult lnmResult) {
 
-                @Override
-                public void onError(String error) {
-                    Log.e(MpesaActivity.this.getClass().getSimpleName(), error);
-                }
-            });
+                                Timber.i(lnmResult.ResponseDescription);
+                                //Toast.makeText(getApplicationContext(), "Confirmed", Toast.LENGTH_SHORT).show();
+                            }
 
-        //Get Phone Number from User Input
-            phonenumber = editTextphone.getText().toString().trim();
-            //Get amount
-            amount = editTextAmount.getText().toString().trim();
+                            @Override
+                            public void onError(String error) {
 
-            LNMExpress lnmExpress = new LNMExpress(
-                    "174379",
-                    "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919",
-                    amount,
-                    "254701919020",
-                    "174379",
-                    phonenumber,
-                    "http://requestbin.fullcontact.com/1e1zm4m1",
-                    "FreelancerPayment",
-                    "TRANSACTION"
-            );
-
-            daraja.requestMPESAExpress(lnmExpress,
-                    new DarajaListener<LNMResult>()
-                    {
-                        @Override
-                        public void onResult(@NonNull LNMResult lnmResult) {
-                            Toast.makeText(getApplicationContext(), "Confirmed", Toast.LENGTH_SHORT).show();
-                           Log.i(MpesaActivity.this.getClass().getSimpleName(), lnmResult.ResponseDescription);
-                        }
-
-                        @Override
-                        public void onError(String error) {
-                            Toast.makeText(MpesaActivity.this, "Error Occured", Toast.LENGTH_SHORT).show();
-                            Log.i(MpesaActivity.this.getClass().getSimpleName(), error);
-                        }
-                    });
+                                Timber.i(error);
+                                Toast.makeText(MpesaActivity.this, "Error. Please Check Safaricom Network Signal and Ensure Internet Connectivity", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+            }
+        });
     }
 }
+
+
 
 
 

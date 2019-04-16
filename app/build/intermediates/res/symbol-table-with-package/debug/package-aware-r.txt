@@ -2029,6 +2029,7 @@ string adding_user_to_db
 string app_name
 string appbar_scrolling_view_behavior
 string are_you_sure
+string authentication_failed
 string bottom_sheet_behavior
 string cancel
 string character_counter_content_description
@@ -2074,6 +2075,8 @@ string logout
 string mtrl_chip_close_icon_content_description
 string navigation_drawer_close
 string navigation_drawer_open
+string not_authenticated
+string on_failure
 string password
 string password_toggle_content_description
 string path_password_eye

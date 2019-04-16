@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Admin\\Downloads\\ServiceMarket\\ServiceMarket\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
+            "outputFile": "/root/StudioProjects/ChapaKaziApp/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-land/values-land.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Admin\\.gradle\\caches\\transforms-1\\files-1.1\\appcompat-v7-28.0.0-alpha3.aar\\72df27d0322c904d05bc715b8fa88239\\res\\values-land\\values-land.xml",
+                    "source": "/root/.gradle/caches/transforms-1/files-1.1/appcompat-v7-28.0.0-alpha3.aar/bccc631e7faaceb563b4390df7d99fd3/res/values-land/values-land.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Admin\\.gradle\\caches\\transforms-1\\files-1.1\\design-28.0.0-alpha3.aar\\46b78dd5724cfa285dd2b46d2c5b57c9\\res\\values-land\\values-land.xml",
+                    "source": "/root/.gradle/caches/transforms-1/files-1.1/design-28.0.0-alpha3.aar/bcfd5ebf9c1515357eb8244f859ab133/res/values-land/values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
